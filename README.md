@@ -69,7 +69,7 @@ Recovery is defined relative to the highest price seen *within the window*, not 
 ## Installation
 
 ```bash
-git clone https://github.com/yourusername/drawdown-analysis.git
+git clone https://github.com/fbaru-dev/drawdown-analysis.git
 cd drawdown-analysis
 pip install -r requirements.txt
 ```

@@ -176,3 +176,33 @@ def query_risk_frontier(
     print(f"  Lognormal KS p-value : {ks_pval:.3f}  "
           f"({'fit OK' if reliable else 'WARNING: fit rejected — treat with caution'})")
     print()
+
+def query_ep_var(prob_df, alpha, holding_days):
+    """
+    Derive EP-VaR from a precomputed risk frontier DataFrame.
+    Uses the same lognormal fit already computed in create_risk_frontier_*.
+    No recomputation needed.
+    """
+    # EP-VaR is the (1-alpha) quantile → invert the survival function
+    # sf(x) = 1-alpha  ↔  x = ppf(alpha)
+    # But prob_df only stores probabilities at fixed thresholds,
+    # so we interpolate across the threshold axis at the target probability (1-alpha)
+    
+    sub = prob_df[prob_df["holding_days"] == holding_days].sort_values("threshold")
+    
+    if sub.empty:
+        print(f"holding_days={holding_days} not found in frontier.")
+        return
+    
+    # interpolate: find threshold where probability = (1-alpha)
+    target_prob = 1 - alpha
+    ep_var_val = np.interp(target_prob, sub["probability"].values[::-1],
+                                        sub["threshold"].values[::-1])
+    
+    print(f"\n  EP-VaR({alpha:.0%}, T={holding_days} days)")
+    print(f"  {'─'*52}")
+    print(f"  EP-VaR               : -{ep_var_val:.2%}")
+    print(f"  Interpretation       : with {alpha:.0%} confidence, max drawdown")
+    print(f"                         will not exceed {ep_var_val:.2%} over {holding_days} days")
+    print(f"  Derived from         : risk frontier (interpolated)")
+  

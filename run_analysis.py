@@ -132,6 +132,10 @@ def main():
     # ── H. EXAMPLE QUERY ──────────────────────────────────────────────────────
     query_risk_frontier(prob_df_unbiased, threshold=0.15, holding_days=20)
 
+    # ── I. EP-VaR FROM RISK FRONTIER ─────────────────────────────────────────
+    query_ep_var(prob_df_unbiased, alpha=0.95, holding_days=20)   # unbiased
+    query_ep_var(prob_df_overlap,  alpha=0.95, holding_days=20)   # biased, for comparison
+
     print("\nAll analyses complete.")
 
 

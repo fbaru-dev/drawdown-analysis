@@ -6,7 +6,7 @@ Run with:  python run_analysis.py
 """
 
 import warnings
-
+import numpy as np
 import scipy.stats as sstats
 
 warnings.filterwarnings("ignore", category=RuntimeWarning)
@@ -105,7 +105,8 @@ def main():
         prices,
         min_holding=MIN_HOLDING_DAYS,
         max_holding=MAX_HOLDING_DAYS,
-        step=5,
+        step=1,
+        thresholds=np.arange(0.01, 0.30, 0.01),
         min_samples=30,
     )
     print(prob_df_unbiased.pivot(
@@ -130,7 +131,7 @@ def main():
     )
 
     # ── H. EXAMPLE QUERY ──────────────────────────────────────────────────────
-    query_risk_frontier(prob_df_unbiased, threshold=0.15, holding_days=20)
+    query_risk_frontier(prob_df_unbiased, threshold=0.13, holding_days=20)
 
     # ── I. EP-VaR FROM RISK FRONTIER ─────────────────────────────────────────
     query_ep_var(prob_df_unbiased, alpha=0.95, holding_days=20)   # unbiased

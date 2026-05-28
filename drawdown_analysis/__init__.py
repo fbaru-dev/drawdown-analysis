@@ -26,6 +26,7 @@ Risk frontier
     create_risk_frontier_probability   (unbiased — use for risk limits)
     create_risk_frontier_from_stats    (biased   — visualisation only)
     query_risk_frontier
+    query_ep_var
 
 Plotting
     plot_prices_drawdown
@@ -47,6 +48,7 @@ from .frontier import (
     create_risk_frontier_probability,
     create_risk_frontier_from_stats,
     query_risk_frontier,
+    query_ep_var,
 )
 from .plotting import (
     plot_prices_drawdown,

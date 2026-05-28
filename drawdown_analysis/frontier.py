@@ -204,5 +204,5 @@ def query_ep_var(prob_df, alpha, holding_days):
     print(f"  EP-VaR               : -{ep_var_val:.2%}")
     print(f"  Interpretation       : with {alpha:.0%} confidence, max drawdown")
     print(f"                         will not exceed {ep_var_val:.2%} over {holding_days} days")
-    print(f"  Derived from         : risk frontier (interpolated)")
+    print( "  Derived from         : risk frontier (interpolated)")
   

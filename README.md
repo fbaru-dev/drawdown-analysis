@@ -3,6 +3,8 @@
 
 A statistically rigorous framework for analysing drawdown risk as a **distribution problem** rather than a single historical metric.
 
+[![Blog](https://img.shields.io/badge/Blog-The%20Quantitative%20Edge-185FA5)](https://fabiobaruffa.com)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 ---
 
 ## Motivation

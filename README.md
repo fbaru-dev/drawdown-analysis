@@ -1,5 +1,5 @@
 # Drawdown Analysis Framework 
-## Fabio Baruffa — The Quantitative Edge https://fabiobaruffa.com
+##  [Fabio Baruffa](https://fabiobaruffa.com) — The Quantitative Edge
 
 A statistically rigorous framework for analysing drawdown risk as a **distribution problem** rather than a single historical metric.
 
